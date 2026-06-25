@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Deep-space gradient backdrop layered behind the starfield canvas */
+.space-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(34, 197, 94, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(59, 130, 246, 0.10), transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 90%, rgba(168, 85, 247, 0.08), transparent 60%),
+    #0f172a;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #f8fafc 20%, #86efac 60%, #22c55e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle dotted grid like a star chart */
+.starchart-grid {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
