@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Constellation — Vedant Pol's Projects",
   description:
     "A hub linking to every live project and deployment by Vedant Pol — portfolios, web apps, AI/ML tools and more.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://constilation.vedant-home-server.in"),
   openGraph: {
     title: "Constellation — Vedant Pol's Projects",
     description: "Navigate every live project and deployment in one place.",

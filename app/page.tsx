@@ -1,7 +1,7 @@
 import Starfield from "@/components/Starfield";
 import ProjectCard from "@/components/ProjectCard";
 import { ArrowUpRight, GitHub, Mail, Sparkle } from "@/components/icons";
-import { projects, notableRepos, social } from "@/lib/projects";
+import { clientProjects, coreProjects, projects, social } from "@/lib/projects";
 
 export default function Home() {
   const liveCount = projects.filter((p) => p.status === "live").length;
@@ -22,16 +22,16 @@ export default function Home() {
           </a>
           <nav className="flex items-center gap-2">
             <a
-              href="#projects"
+              href="#client"
               className="hidden cursor-pointer rounded-lg px-3 py-2 text-sm text-slate-300 transition-colors hover:text-star sm:inline-block"
             >
-              Live Projects
+              Client
             </a>
             <a
-              href="#repos"
+              href="#core"
               className="hidden cursor-pointer rounded-lg px-3 py-2 text-sm text-slate-300 transition-colors hover:text-star sm:inline-block"
             >
-              Repositories
+              Core
             </a>
             <a
               href={social.github}
@@ -62,12 +62,12 @@ export default function Home() {
               <span className="text-gradient">one constellation.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              A single launchpad to navigate every live site and deployment I&rsquo;ve shipped
-              over the years &mdash; portfolios, business sites, web apps and AI/ML tools.
+              A single launchpad to navigate everything I&rsquo;ve built &mdash; client websites,
+              personal portfolios, web apps and AI/ML tools.
             </p>
             <div className="mt-8 flex items-center justify-center gap-3">
               <a
-                href="#projects"
+                href="#client"
                 className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-live px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-emerald-400"
               >
                 Explore the projects
@@ -84,49 +84,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Live projects grid */}
-        <section id="projects" className="scroll-mt-20 py-10">
+        {/* Client projects */}
+        <section id="client" className="scroll-mt-20 py-10">
           <SectionHeading
-            eyebrow="Live deployments"
-            title="The constellation"
-            subtitle="Sites that are publicly reachable right now. Each card links to the live deployment and its source."
+            eyebrow="For clients"
+            title="Client projects"
+            subtitle="Websites I've designed and shipped for businesses and clients."
           />
           <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, i) => (
+            {clientProjects.map((project, i) => (
               <ProjectCard key={project.repo} project={project} index={i} />
             ))}
           </div>
         </section>
 
-        {/* Notable repos */}
-        <section id="repos" className="scroll-mt-20 py-16">
+        {/* Core projects */}
+        <section id="core" className="scroll-mt-20 py-16">
           <SectionHeading
-            eyebrow="From the lab"
-            title="Notable repositories"
-            subtitle="Projects worth a look that don't have a public deployment — yet."
+            eyebrow="Built by me"
+            title="Core projects"
+            subtitle="Personal portfolios, products and experiments — live deployments and source repositories."
           />
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {notableRepos.map((r) => (
-              <a
-                key={r.repo}
-                href={r.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex cursor-pointer flex-col rounded-xl border border-white/10 bg-ink-2/30 p-5 transition-colors duration-200 hover:border-white/25 hover:bg-ink-2/50"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-heading text-base font-semibold text-star">{r.name}</h3>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-live" />
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{r.blurb}</p>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {r.tags.map((t) => (
-                    <li key={t} className="rounded-full border border-white/10 px-2 py-0.5 text-xs text-slate-400">
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </a>
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {coreProjects.map((project, i) => (
+              <ProjectCard key={project.repo} project={project} index={i} />
             ))}
           </div>
         </section>
