@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     description: "Navigate every live project and deployment in one place.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Constellation — Vedant Pol's Projects",
+    description: "Navigate every live project and deployment in one place.",
+  },
 };
 
 export const viewport: Viewport = {

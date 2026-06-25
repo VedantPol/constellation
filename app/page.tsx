@@ -14,9 +14,9 @@ export default function Home() {
       {/* Readability scrim over the shader */}
       <div className="pointer-events-none fixed inset-0 -z-10 bg-ink/45" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        {/* Nav */}
-        <header className="flex items-center justify-between py-6">
+      {/* Sticky glass nav (full-width) */}
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/60 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
           <a href="#top" className="flex items-center gap-2 font-heading text-lg font-semibold tracking-tight">
             <Sparkle className="h-5 w-5 text-live" />
             Constellation
@@ -45,7 +45,10 @@ export default function Home() {
               <span className="hidden sm:inline">GitHub</span>
             </a>
           </nav>
-        </header>
+        </div>
+      </header>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
 
         {/* Hero */}
         <section id="top" className="flex min-h-[86vh] items-center py-16">
@@ -159,7 +162,7 @@ function SectionHeading({
     <div className="max-w-2xl">
       <p className="text-xs font-medium uppercase tracking-[0.2em] text-live">{eyebrow}</p>
       <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-      <p className="mt-3 text-base leading-relaxed text-slate-400">{subtitle}</p>
+      <p className="mt-3 text-base leading-relaxed text-slate-300">{subtitle}</p>
     </div>
   );
 }
