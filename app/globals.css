@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
+@layer base {
+  /* shadcn design tokens — themed to the Constellation dark palette */
+  :root {
+    color-scheme: dark;
+
+    --background: 222 47% 11%;        /* #0F172A ink */
+    --foreground: 210 40% 98%;        /* #F8FAFC star */
+    --card: 217 33% 17%;              /* #1E293B ink-2 */
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 71% 45%;           /* #22C55E live */
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 20%;
+    --muted-foreground: 215 20% 65%;  /* slate-400 */
+    --accent: 142 71% 45%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 20% 35% / 0.25;
+    --input: 215 20% 35% / 0.3;
+    --ring: 142 71% 45%;              /* green focus ring */
+    --radius: 0.75rem;
+  }
 }
 
 html {
@@ -38,6 +62,44 @@ body {
   background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
   background-size: 36px 36px;
 }
+
+/* Animated glow border for cards (adapted from the glowing-shadow showpiece) */
+@property --gs-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes gs-spin {
+  to { --gs-angle: 360deg; }
+}
+.gs-wrap {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1rem;
+}
+.gs-wrap::before,
+.gs-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--gs-angle), #22c55e, #86efac, #2dd4bf, #14b8a6, #22c55e);
+  animation: gs-spin 6s linear infinite;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.gs-wrap::before {
+  z-index: -1;
+  opacity: 0.4;
+}
+.gs-wrap::after {
+  inset: -3px;
+  z-index: -2;
+  filter: blur(18px);
+  opacity: 0;
+}
+.gs-wrap:hover::before { opacity: 0.95; }
+.gs-wrap:hover::after { opacity: 0.55; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
