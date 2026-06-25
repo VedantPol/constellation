@@ -20,7 +20,7 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.45, delay: (index % 3) * 0.08, ease: "easeOut" }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-ink-2/40 p-6 backdrop-blur-sm transition-colors duration-200 hover:border-live/40 hover:bg-ink-2/60"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-ink-2/70 p-6 backdrop-blur-md transition-colors duration-200 hover:border-live/40 hover:bg-ink-2/80"
     >
       {/* glow on hover */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-live/10 blur-3xl transition-opacity duration-300 opacity-0 group-hover:opacity-100" />

@@ -1,4 +1,4 @@
-import Starfield from "@/components/Starfield";
+import ShaderBackground from "@/components/ShaderBackground";
 import ProjectCard from "@/components/ProjectCard";
 import { ArrowUpRight, GitHub, Mail, Sparkle } from "@/components/icons";
 import { clientProjects, coreProjects, projects, social } from "@/lib/projects";
@@ -7,13 +7,14 @@ export default function Home() {
   const liveCount = projects.filter((p) => p.status === "live").length;
 
   return (
-    <main className="relative min-h-screen space-bg">
-      <Starfield />
+    <main className="relative min-h-screen">
+      {/* Flowing WebGL shader background (fixed, behind everything) */}
+      <ShaderBackground />
 
-      {/* subtle star-chart grid overlay */}
-      <div className="pointer-events-none absolute inset-0 starchart-grid opacity-40" />
+      {/* Readability scrim over the shader */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-ink/45" />
 
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         {/* Nav */}
         <header className="flex items-center justify-between py-6">
           <a href="#top" className="flex items-center gap-2 font-heading text-lg font-semibold tracking-tight">
@@ -47,8 +48,10 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <section id="top" className="py-16 sm:py-24">
-          <div className="mx-auto max-w-3xl text-center">
+        <section id="top" className="flex min-h-[86vh] items-center py-16">
+          <div className="relative mx-auto max-w-3xl text-center">
+            {/* soft radial scrim to anchor the hero copy over the shader */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 -z-[1] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink/40 blur-3xl" />
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-live" />
