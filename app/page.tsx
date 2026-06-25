@@ -1,4 +1,4 @@
-import { ShaderAnimation } from "@/components/ui/shader-animation";
+import LayoutPreloader from "@/components/ui/layout-preloader";
 import Hero from "@/components/ui/animated-shader-hero";
 import { TrailCard, type ProjectStatus } from "@/components/ui/trail-card";
 import { GlowingShadow } from "@/components/ui/glowing-shadow";
@@ -11,12 +11,8 @@ import { categories, projectsByCategory, liveCount, profile, social } from "@/li
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Animated shader background (fixed, behind everything) */}
-      <div className="pointer-events-none fixed inset-0 -z-10 opacity-60">
-        <ShaderAnimation />
-      </div>
-      {/* Readability scrim over the shader */}
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-ink/65" />
+      {/* Start animation */}
+      <LayoutPreloader />
 
       {/* Sticky glass nav (full-width) */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-md">
@@ -51,28 +47,28 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        {/* Hero / landing screen */}
-        <Hero
-          id="top"
-          trustBadge={{
-            text: `${liveCount} live deployments · ${profile.location}`,
-            icons: [
-              <span key="dot" className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-live" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-live" />
-              </span>,
-            ],
-          }}
-          headline={{ line1: profile.name, line2: profile.tagline }}
-          subtitle={`${profile.role}. ${profile.intro}`}
-          buttons={{
-            primary: { text: "Explore projects", href: "#client" },
-            secondary: { text: "Get in touch", href: `mailto:${social.email}` },
-          }}
-        />
+      {/* Galaxy shader hero (full-width landing) */}
+      <Hero
+        id="top"
+        trustBadge={{
+          text: `${liveCount} live deployments · ${profile.location}`,
+          icons: [
+            <span key="dot" className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-live" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-live" />
+            </span>,
+          ],
+        }}
+        headline={{ line1: "Every project,", line2: "one constellation." }}
+        subtitle={`${profile.name} — ${profile.role}. ${profile.intro}`}
+        buttons={{
+          primary: { text: "Explore projects", href: "#client" },
+          secondary: { text: "Get in touch", href: `mailto:${social.email}` },
+        }}
+      />
 
-        {/* Category sections */}
+      {/* Project sections */}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         {categories.map((cat) => (
           <section key={cat.id} id={cat.id} className="scroll-mt-24 py-12 sm:py-16">
             <div className="max-w-2xl">
