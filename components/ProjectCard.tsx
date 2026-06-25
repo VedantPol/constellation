@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 import { ArrowUpRight, GitHub } from "./icons";
@@ -13,6 +14,7 @@ export default function ProjectCard({
 }) {
   const hasLink = Boolean(project.url);
   const isLive = project.status === "live";
+  const primaryHref = project.url ?? project.repo;
 
   return (
     <motion.article
@@ -20,23 +22,39 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.45, delay: (index % 3) * 0.08, ease: "easeOut" }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-ink-2/70 p-6 backdrop-blur-md transition-colors duration-200 hover:border-live/40 hover:bg-ink-2/80"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-2/70 backdrop-blur-md transition-colors duration-200 hover:border-live/40"
     >
-      {/* glow on hover */}
-      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-live/10 blur-3xl transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-
-      <div className="relative">
-        <div className="mb-4 flex items-center justify-between gap-3">
+      {/* Preview image (sneak peek) */}
+      <a
+        href={primaryHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${project.name}`}
+        className="relative block aspect-[16/10] cursor-pointer overflow-hidden border-b border-white/10"
+      >
+        <Image
+          src={project.image}
+          alt={`Preview of ${project.name}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+        {/* legibility gradient + badges */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30" />
+        <div className="absolute left-3 top-3">
           <StatusBadge hasLink={hasLink} isLive={isLive} />
-          <span className="text-xs uppercase tracking-widest text-slate-400">
-            {hasLink ? project.host : "GitHub"}
-          </span>
         </div>
+        {hasLink && (
+          <span className="absolute right-3 top-3 rounded-full bg-ink/70 px-2.5 py-1 text-[11px] uppercase tracking-widest text-slate-200 backdrop-blur-sm">
+            {project.host}
+          </span>
+        )}
+      </a>
 
-        <h3 className="font-heading text-xl font-semibold text-star">{project.name}</h3>
-        <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-300">
-          {project.blurb}
-        </p>
+      {/* Body */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-heading text-lg font-semibold text-star">{project.name}</h3>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-300">{project.blurb}</p>
 
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
@@ -48,34 +66,34 @@ export default function ProjectCard({
             </li>
           ))}
         </ul>
-      </div>
 
-      <div className="relative mt-6 flex items-center gap-3">
-        {hasLink && (
+        <div className="mt-5 flex items-center gap-3">
+          {hasLink && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-live px-4 py-2 text-sm font-medium text-ink transition-colors duration-200 hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-live"
+            >
+              {isLive ? "Visit live" : "Open (may be asleep)"}
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
           <a
-            href={project.url}
+            href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-live px-4 py-2 text-sm font-medium text-ink transition-colors duration-200 hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-live"
+            aria-label={`${project.name} source code on GitHub`}
+            className={`inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+              hasLink
+                ? "border border-white/10 text-slate-200 hover:border-white/30 hover:text-star focus-visible:outline-white/40"
+                : "bg-live px-4 font-medium text-ink hover:bg-emerald-400 focus-visible:outline-live"
+            }`}
           >
-            {isLive ? "Visit live" : "Open (may be asleep)"}
-            <ArrowUpRight className="h-4 w-4" />
+            <GitHub className="h-4 w-4" />
+            {hasLink ? "Code" : "View on GitHub"}
           </a>
-        )}
-        <a
-          href={project.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${project.name} source code on GitHub`}
-          className={`inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-            hasLink
-              ? "border border-white/10 text-slate-200 hover:border-white/30 hover:text-star focus-visible:outline-white/40"
-              : "bg-live px-4 font-medium text-ink hover:bg-emerald-400 focus-visible:outline-live"
-          }`}
-        >
-          <GitHub className="h-4 w-4" />
-          {hasLink ? "Code" : "View on GitHub"}
-        </a>
+        </div>
       </div>
     </motion.article>
   );
@@ -84,7 +102,7 @@ export default function ProjectCard({
 function StatusBadge({ hasLink, isLive }: { hasLink: boolean; isLive: boolean }) {
   if (!hasLink) {
     return (
-      <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
+      <span className="inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur-sm">
         <span className="h-2 w-2 rounded-full bg-slate-400" />
         Repository
       </span>
@@ -92,7 +110,7 @@ function StatusBadge({ hasLink, isLive }: { hasLink: boolean; isLive: boolean })
   }
   if (isLive) {
     return (
-      <span className="inline-flex items-center gap-2 rounded-full bg-live/10 px-3 py-1 text-xs font-medium text-live">
+      <span className="inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-live backdrop-blur-sm">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-live" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-live" />
@@ -102,7 +120,7 @@ function StatusBadge({ hasLink, isLive }: { hasLink: boolean; isLive: boolean })
     );
   }
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
+    <span className="inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1 text-xs font-medium text-amber-300 backdrop-blur-sm">
       <span className="h-2 w-2 rounded-full bg-amber-300" />
       Sleeping
     </span>

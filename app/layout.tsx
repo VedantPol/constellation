@@ -17,19 +17,19 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Constellation — Vedant Pol's Projects",
+  title: "Vedant Pol — Constellation",
   description:
-    "A hub linking to every live project and deployment by Vedant Pol — portfolios, web apps, AI/ML tools and more.",
+    "Vedant Pol, ML/GenAI & Data Science Engineer. A single place to explore everything I've built — client websites, live AI/ML systems and open-source work.",
   metadataBase: new URL("https://constilation.vedant-home-server.in"),
   openGraph: {
-    title: "Constellation — Vedant Pol's Projects",
-    description: "Navigate every live project and deployment in one place.",
+    title: "Vedant Pol — Constellation",
+    description: "Explore everything I've built — client sites, live AI/ML systems and open-source work.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Constellation — Vedant Pol's Projects",
-    description: "Navigate every live project and deployment in one place.",
+    title: "Vedant Pol — Constellation",
+    description: "Explore everything I've built — client sites, live AI/ML systems and open-source work.",
   },
 };
 

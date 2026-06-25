@@ -1,5 +1,5 @@
 export type ProjectStatus = "live" | "offline";
-export type Category = "client" | "core";
+export type Category = "client" | "ai" | "web";
 
 export type Project = {
   /** Display name */
@@ -12,6 +12,8 @@ export type Project = {
   tags: string[];
   /** Which section the card appears in */
   category: Category;
+  /** Local preview image (sneak peek) under /public */
+  image: string;
   /** Public deployment URL — present only when the project is hosted somewhere */
   url?: string;
   /** Liveness of `url` from the last HTTP probe (only meaningful when `url` is set) */
@@ -20,19 +22,48 @@ export type Project = {
   host?: "Vercel" | "GitHub Pages" | "Custom Domain" | "Render" | "Self-hosted";
 };
 
+export type CategoryMeta = {
+  id: Category;
+  label: string;
+  eyebrow: string;
+  subtitle: string;
+};
+
+export const categories: CategoryMeta[] = [
+  {
+    id: "client",
+    label: "Client Work",
+    eyebrow: "For businesses",
+    subtitle: "Websites I've designed and shipped for real clients.",
+  },
+  {
+    id: "ai",
+    label: "AI / ML & Data",
+    eyebrow: "Intelligent systems",
+    subtitle: "Deployed RAG, agentic and forecasting systems — most running live on my own server.",
+  },
+  {
+    id: "web",
+    label: "Web & Open Source",
+    eyebrow: "Apps & contributions",
+    subtitle: "Personal sites, products and open-source work.",
+  },
+];
+
 /**
- * Every showcased project. Split into sections by `category`.
- * Liveness of deployed entries was verified by HTTP probe on 2026-06-25.
- * Add self-hosted projects here with their public `url` and host: "Self-hosted".
+ * Every showcased project. Liveness verified by HTTP probe on 2026-06-25.
+ * Preview images live in /public/previews (screenshots for live sites,
+ * GitHub social cards for offline / repo-only projects).
  */
 export const projects: Project[] = [
-  // ── Client projects ──────────────────────────────────────────────
+  // ── Client work ──────────────────────────────────────────────────
   {
     name: "Vision Technocraft",
     blurb: "Official company website for Vision Technocraft, live on a custom domain.",
     repo: "https://github.com/VedantPol/visiontechnocraft.github.io",
-    tags: ["HTML/CSS/JS", "Business", "Custom Domain"],
+    tags: ["Business", "HTML/CSS/JS", "Custom Domain"],
     category: "client",
+    image: "/previews/vision-technocraft.webp",
     url: "https://visiontechnocraft.in",
     status: "live",
     host: "Custom Domain",
@@ -43,86 +74,120 @@ export const projects: Project[] = [
     repo: "https://github.com/VedantPol/shri-geeta-tours",
     tags: ["Next.js", "Tailwind", "Framer Motion"],
     category: "client",
+    image: "/previews/shri-geeta.webp",
     url: "https://shri-geeta-tours2.vercel.app",
     status: "live",
     host: "Vercel",
   },
 
-  // ── Core projects ────────────────────────────────────────────────
+  // ── AI / ML & Data ───────────────────────────────────────────────
+  {
+    name: "Enterprise RAG Knowledge Assistant",
+    blurb:
+      "A source-aware assistant for policy and technical docs: PDF parsing, embeddings, reranking and citation-grounded answers.",
+    repo: "https://github.com/VedantPol/enterprise-rag-knowledge-assistant",
+    tags: ["LangChain", "FastAPI", "Docker", "RAG"],
+    category: "ai",
+    image: "/previews/enterprise-rag.webp",
+    url: "https://enterprise_rag.vedant-home-server.in/",
+    status: "live",
+    host: "Self-hosted",
+  },
+  {
+    name: "Multi-Agent Knowledge Manager",
+    blurb:
+      "A LangGraph + AutoGen system with Retriever, Planner and Critic agents, guardrails, hallucination checks and LLM-as-Judge evaluation.",
+    repo: "https://github.com/VedantPol/multi-agent-knowledge-manager",
+    tags: ["LangGraph", "AutoGen", "FastAPI", "Agents"],
+    category: "ai",
+    image: "/previews/multi-agent.webp",
+    url: "https://multi_agent_kms.vedant-home-server.in/",
+    status: "live",
+    host: "Self-hosted",
+  },
+  {
+    name: "RetailPulse AI",
+    blurb:
+      "A Dockerized retail analytics platform: demand forecasting, stockout risk scoring, anomaly detection and AI-assisted insights.",
+    repo: "https://github.com/VedantPol/retailpulse-ai",
+    tags: ["LightGBM", "Streamlit", "FastAPI", "MLOps"],
+    category: "ai",
+    image: "/previews/retailpulse.webp",
+    url: "https://retail_pulse.vedant-home-server.in/",
+    status: "live",
+    host: "Self-hosted",
+  },
+  {
+    name: "Personal Finance Analyzer",
+    blurb: "A Python tool that turns bank statements into masked, verified spending insights and plain-language advice.",
+    repo: "https://github.com/VedantPol/personal-finance-analyzer",
+    tags: ["Python", "Finance", "Data Viz"],
+    category: "ai",
+    image: "/previews/finance-analyzer.webp",
+    url: "https://personal-finance-analyzernew.vercel.app",
+    status: "live",
+    host: "Vercel",
+  },
+
+  // ── Web & Open Source ────────────────────────────────────────────
   {
     name: "AI/ML Portfolio",
-    blurb: "Animated personal portfolio for AI/ML work — built for Vercel with Cloudflare DNS.",
+    blurb: "My animated personal portfolio — experience, projects, a patent, Kaggle and more.",
     repo: "https://github.com/VedantPol/vedant-pol-portfolio",
-    tags: ["JavaScript", "Portfolio", "Animated"],
-    category: "core",
+    tags: ["React", "Vite", "Framer Motion"],
+    category: "web",
+    image: "/previews/aiml-portfolio.webp",
     url: "https://aiportfoliowebsite.vercel.app",
     status: "live",
     host: "Vercel",
   },
   {
     name: "Terminal Portfolio",
-    blurb: "A terminal-styled website to showcase my portfolio and projects.",
+    blurb: "A playful terminal-styled site — type commands to explore my work.",
     repo: "https://github.com/VedantPol/VedantPol-Website",
     tags: ["TypeScript", "Terminal UI"],
-    category: "core",
+    category: "web",
+    image: "/previews/terminal-portfolio.webp",
     url: "https://vedantpol-website-vedantpol.vercel.app",
     status: "live",
     host: "Vercel",
   },
   {
-    name: "Enterprise RAG Knowledge Assistant",
-    blurb: "Enterprise RAG assistant built with FastAPI, LangChain, Pinecone and Docker.",
-    repo: "https://github.com/VedantPol/enterprise-rag-knowledge-assistant",
-    tags: ["Python", "LangChain", "RAG"],
-    category: "core",
-  },
-  {
-    name: "RetailPulse AI",
-    blurb: "Forecasting & recommendation platform for retail.",
-    repo: "https://github.com/VedantPol/retailpulse-ai",
-    tags: ["Python", "ML", "Forecasting"],
-    category: "core",
-  },
-  {
-    name: "Multi-Agent Knowledge Manager",
-    blurb: "A multi-agent system for managing and querying knowledge.",
-    repo: "https://github.com/VedantPol/multi-agent-knowledge-manager",
-    tags: ["Python", "Agents", "LLM"],
-    category: "core",
-  },
-  {
-    name: "Personal Finance Analyzer",
-    blurb: "A Python-powered tool for analyzing and visualizing personal finances.",
-    repo: "https://github.com/VedantPol/personal-finance-analyzer",
-    tags: ["Python", "Finance", "Data Viz"],
-    category: "core",
-    url: "https://personal-finance-analyzernew.vercel.app",
-    status: "live",
-    host: "Vercel",
-  },
-  {
-    name: "GSoC 2022 — XWiki",
-    blurb: "Google Summer of Code 2022 final work-product report with the XWiki org.",
-    repo: "https://github.com/VedantPol/GSoC_2022_Report_XWiki",
-    tags: ["Open Source", "GSoC"],
-    category: "core",
-  },
-  {
     name: "NoteVault",
-    blurb: "A generic note-keeping application. Hosted on Render's free tier — may need a moment to wake.",
+    blurb: "A full-stack note-keeping app. Hosted on Render's free tier — may need a moment to wake.",
     repo: "https://github.com/VedantPol/NoteVault",
     tags: ["JavaScript", "Full-stack", "Notes"],
-    category: "core",
+    category: "web",
+    image: "/previews/notevault.webp",
     url: "https://notevault-3kcd.onrender.com",
     status: "offline",
     host: "Render",
   },
+  {
+    name: "GSoC 2022 — XWiki",
+    blurb: "Google Summer of Code with XWiki: built the Snap package and automated cloud-ready release workflows.",
+    repo: "https://github.com/VedantPol/GSoC_2022_Report_XWiki",
+    tags: ["Open Source", "GSoC", "Docker"],
+    category: "web",
+    image: "/previews/gsoc-xwiki.webp",
+  },
 ];
 
-export const clientProjects = projects.filter((p) => p.category === "client");
-export const coreProjects = projects.filter((p) => p.category === "core");
+export const projectsByCategory = (id: Category) => projects.filter((p) => p.category === id);
+
+export const liveCount = projects.filter((p) => p.status === "live").length;
+
+export const profile = {
+  name: "Vedant Pol",
+  role: "ML, GenAI & Data Science Engineer",
+  location: "Mumbai, India",
+  tagline: "Every project, one constellation.",
+  intro:
+    "A single place to explore everything I've built — client websites, deployed AI/ML systems, and open-source work.",
+};
 
 export const social = {
   github: "https://github.com/VedantPol",
+  linkedin: "https://www.linkedin.com/in/vedant-pol-30987b20a",
   email: "polvedant11@gmail.com",
 };

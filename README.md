@@ -22,16 +22,27 @@ npm run build && npm start
 
 All content lives in [`lib/projects.ts`](lib/projects.ts) — no component edits needed.
 
-- **`projects`** — live (or recently-live) deployments shown in the main grid.
-  Set `status: "live" | "offline"`, `featured: true` to render a card larger,
-  and `host` to label where it runs.
-- **`notableRepos`** — repositories without a public deployment.
+- **`projects`** — one entry per project. Set `category` (`client` | `ai` | `web`),
+  `image` (preview under `/public/previews`), and `tags`. For deployed projects add
+  `url`, `status` (`live` | `offline`) and `host`; omit them for repo-only entries.
+- **`categories`** — the section headings / sticky tabs.
+- **`profile`** / **`social`** — name, role, tagline and links shown in the hero, nav and footer.
+
+### Preview images (sneak peeks)
+
+Previews live in `public/previews/*.webp`. To regenerate one:
+
+- **Live site** — screenshot via thum.io, e.g.
+  `https://image.thum.io/get/width/1200/crop/750/noanimate/<url>`
+- **Offline / repo-only** — GitHub social card:
+  `https://opengraph.githubassets.com/1/VedantPol/<repo>`
+
+Then downscale to WebP (~1000px wide) with `sharp` and drop it in `public/previews`.
 
 ### Self-hosted sites
 
-Sites running on your own server won't have a GitHub `homepageUrl`, so they can't be
-auto-detected. Add them to the `projects` array manually with their public URL and
-`host: "Self-hosted"`.
+Sites on your own server have no GitHub `homepageUrl`, so add them manually with their
+public `url` and `host: "Self-hosted"` (e.g. the live AI apps on `vedant-home-server.in`).
 
 ## Deploy
 
