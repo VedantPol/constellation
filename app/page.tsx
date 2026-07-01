@@ -2,46 +2,18 @@ import Hero from "@/components/ui/animated-shader-hero";
 import { TrailCard, type ProjectStatus } from "@/components/ui/trail-card";
 import { GlowingShadow } from "@/components/ui/glowing-shadow";
 import { CinematicFooter } from "@/components/ui/motion-footer";
-import CategoryTabs from "@/components/CategoryTabs";
-import Logo from "@/components/Logo";
-import { GitHub, LinkedIn } from "@/components/icons";
+import { Navbar } from "@/components/ui/mini-navbar";
+import StarsBackground from "@/components/StarsBackground";
 import { categories, projectsByCategory, liveCount, profile, social } from "@/lib/projects";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Sticky glass nav (full-width) */}
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
-          <a href="#top" className="flex shrink-0 items-center gap-2 font-heading text-lg font-semibold tracking-tight">
-            <Logo className="h-6 w-6" />
-            <span className="hidden sm:inline">Constellation</span>
-          </a>
+      {/* Shooting-stars page background */}
+      <StarsBackground />
 
-          <CategoryTabs />
-
-          <div className="flex shrink-0 items-center gap-1">
-            <a
-              href={social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="cursor-pointer rounded-lg p-2 text-neutral-300 transition-colors hover:text-star"
-            >
-              <GitHub className="h-5 w-5" />
-            </a>
-            <a
-              href={social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-              className="cursor-pointer rounded-lg p-2 text-neutral-300 transition-colors hover:text-star"
-            >
-              <LinkedIn className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </header>
+      {/* Floating mini navbar */}
+      <Navbar />
 
       {/* Galaxy shader hero (full-width landing) */}
       <Hero
