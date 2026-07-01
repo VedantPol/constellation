@@ -28,7 +28,7 @@ interface TrailCardProps {
 
 const STATUS_META: Record<ProjectStatus, { label: string; className: string }> = {
   live: { label: "Live", className: "text-live" },
-  offline: { label: "Sleeping", className: "text-amber-300" },
+  offline: { label: "Sleeping", className: "text-slate-400" },
   repo: { label: "Repository", className: "text-slate-300" },
 };
 

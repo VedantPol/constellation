@@ -285,7 +285,7 @@ void main(){gl_Position=position;}`;
 function HeroButton({ spec, variant }: { spec: ButtonSpec; variant: "primary" | "secondary" }) {
   const classes =
     variant === "primary"
-      ? "px-8 py-4 bg-live hover:bg-emerald-400 text-ink rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-live/25 cursor-pointer"
+      ? "px-8 py-4 bg-live hover:bg-amber-400 text-ink rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-live/25 cursor-pointer"
       : "px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-slate-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm cursor-pointer";
   if (spec.href) {
     return (

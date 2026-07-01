@@ -186,9 +186,9 @@ MagneticButton.displayName = "MagneticButton";
 const MarqueeItem = () => (
   <div className="flex items-center space-x-12 px-6">
     <span>ML &amp; GenAI Engineer</span> <span className="text-live/60">✦</span>
-    <span>RAG &amp; Agentic AI</span> <span className="text-emerald-300/50">✦</span>
+    <span>RAG &amp; Agentic AI</span> <span className="text-amber-300/50">✦</span>
     <span>Live Deployments</span> <span className="text-live/60">✦</span>
-    <span>Open Source</span> <span className="text-emerald-300/50">✦</span>
+    <span>Open Source</span> <span className="text-amber-300/50">✦</span>
     <span>Built in Mumbai</span> <span className="text-live/60">✦</span>
   </div>
 );
