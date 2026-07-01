@@ -16,14 +16,14 @@ export default function Logo({ className }: { className?: string }) {
         opacity="0.45"
       />
       {/* top stars */}
-      <circle cx="6" cy="7" r="1.7" fill="#F59E0B" />
-      <circle cx="26" cy="7" r="1.7" fill="#F59E0B" />
+      <circle cx="6" cy="7" r="1.7" fill="#F97316" />
+      <circle cx="26" cy="7" r="1.7" fill="#F97316" />
       {/* mid stars on the strokes */}
-      <circle cx="10.6" cy="14.4" r="1.15" fill="#FCD34D" />
-      <circle cx="21.4" cy="14.4" r="1.15" fill="#FCD34D" />
+      <circle cx="10.6" cy="14.4" r="1.15" fill="#FB923C" />
+      <circle cx="21.4" cy="14.4" r="1.15" fill="#FB923C" />
       {/* lead star at the vertex, with glow */}
-      <circle cx="16" cy="23" r="3.2" fill="#F59E0B" opacity="0.25" />
-      <circle cx="16" cy="23" r="2" fill="#FBBF24" />
+      <circle cx="16" cy="23" r="3.2" fill="#F97316" opacity="0.25" />
+      <circle cx="16" cy="23" r="2" fill="#FDBA74" />
     </svg>
   );
 }

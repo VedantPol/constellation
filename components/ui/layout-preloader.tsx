@@ -48,7 +48,7 @@ export default function LayoutPreloader() {
 
       {/* Single center mark */}
       <div className="relative z-10 flex flex-col items-center animate-fade-in-up">
-        <Logo className="h-14 w-14 drop-shadow-[0_0_24px_rgba(245,158,11,0.55)]" />
+        <Logo className="h-14 w-14 drop-shadow-[0_0_24px_rgba(249,115,22,0.55)]" />
         <h1 className="mt-5 font-heading text-2xl font-semibold uppercase tracking-[0.45em] text-star sm:text-3xl">
           Constellation
         </h1>
@@ -56,7 +56,7 @@ export default function LayoutPreloader() {
 
         <div className="mt-8 h-px w-48 overflow-hidden rounded-full bg-white/10">
           <div
-            className="h-full bg-gradient-to-r from-live to-amber-300 transition-[width] duration-[1700ms] ease-out"
+            className="h-full bg-gradient-to-r from-live to-orange-300 transition-[width] duration-[1700ms] ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
