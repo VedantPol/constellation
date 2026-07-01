@@ -17,7 +17,7 @@ export default function OpengraphImage() {
           padding: "80px",
           backgroundColor: "#0A0A0A",
           backgroundImage:
-            "radial-gradient(circle at 78% 12%, rgba(249,115,22,0.32), transparent 55%)",
+            "radial-gradient(circle at 78% 12%, rgba(255,255,255,0.12), transparent 55%)",
           color: "#F8FAFC",
           fontFamily: "sans-serif",
         }}
@@ -28,8 +28,8 @@ export default function OpengraphImage() {
               width: "18px",
               height: "18px",
               borderRadius: "9999px",
-              backgroundColor: "#F97316",
-              boxShadow: "0 0 24px 4px rgba(249,115,22,0.85)",
+              backgroundColor: "#FFFFFF",
+              boxShadow: "0 0 24px 4px rgba(255,255,255,0.7)",
             }}
           />
           <div
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
               fontSize: "26px",
               letterSpacing: "6px",
               textTransform: "uppercase",
-              color: "#FDBA74",
+              color: "#D4D4D4",
             }}
           >
             Constellation
@@ -56,7 +56,7 @@ export default function OpengraphImage() {
           }}
         >
           <span>Every project,</span>
-          <span style={{ color: "#F97316" }}>one constellation.</span>
+          <span style={{ color: "#FFFFFF" }}>one constellation.</span>
         </div>
 
         <div style={{ display: "flex", marginTop: "36px", fontSize: "30px", color: "#CBD5E1" }}>

@@ -285,8 +285,8 @@ void main(){gl_Position=position;}`;
 function HeroButton({ spec, variant }: { spec: ButtonSpec; variant: "primary" | "secondary" }) {
   const classes =
     variant === "primary"
-      ? "px-8 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 cursor-pointer"
-      : "px-8 py-4 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-300/30 hover:border-orange-300/50 text-orange-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm cursor-pointer";
+      ? "px-8 py-4 bg-white hover:bg-neutral-200 text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-white/20 cursor-pointer"
+      : "px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-neutral-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm cursor-pointer";
   if (spec.href) {
     return (
       <a href={spec.href} className={classes}>
@@ -309,7 +309,7 @@ const Hero: React.FC<HeroProps> = ({ trustBadge, headline, subtitle, buttons, id
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full touch-none"
+        className="absolute inset-0 w-full h-full touch-none grayscale"
         style={{ background: "#000000" }}
       />
 
@@ -320,29 +320,29 @@ const Hero: React.FC<HeroProps> = ({ trustBadge, headline, subtitle, buttons, id
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
-            <div className="flex items-center gap-2 px-6 py-3 bg-orange-500/10 backdrop-blur-md border border-orange-300/30 rounded-full text-sm">
+            <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-md border border-white/15 rounded-full text-sm">
               {trustBadge.icons?.map((icon, index) => (
                 <span key={index} className="inline-flex items-center">
                   {icon}
                 </span>
               ))}
-              <span className="text-orange-100">{trustBadge.text}</span>
+              <span className="text-neutral-200">{trustBadge.text}</span>
             </div>
           </div>
         )}
 
         <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
           <div className="space-y-1">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold bg-gradient-to-r from-orange-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent animate-gradient animate-fade-in-up animation-delay-200">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-star animate-fade-in-up animation-delay-200">
               {headline.line1}
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold bg-gradient-to-r from-yellow-300 via-orange-400 to-red-400 bg-clip-text text-transparent animate-gradient animate-fade-in-up animation-delay-400">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-gradient animate-gradient animate-fade-in-up animation-delay-400">
               {headline.line2}
             </h1>
           </div>
 
           <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
-            <p className="text-lg md:text-xl lg:text-2xl text-orange-100/90 font-light leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 font-light leading-relaxed">
               {subtitle}
             </p>
           </div>

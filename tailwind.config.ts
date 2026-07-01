@@ -14,7 +14,7 @@ const config: Config = {
         ink: "#000000",
         "ink-2": "#121212",
         "ink-3": "#1F1F1F",
-        live: "#F97316",
+        live: "#FFFFFF",
         star: "#F8FAFC",
         // shadcn tokens (themed in app/globals.css)
         border: "hsl(var(--border))",
@@ -61,7 +61,7 @@ const config: Config = {
         body: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(249,115,22,0.25), 0 8px 40px -8px rgba(249,115,22,0.35)",
+        glow: "0 0 0 1px rgba(255,255,255,0.2), 0 8px 40px -8px rgba(255,255,255,0.25)",
         card: "0 16px 48px -16px rgba(0,0,0,0.7)",
       },
       keyframes: {

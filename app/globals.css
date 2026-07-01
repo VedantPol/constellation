@@ -13,19 +13,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 0%;
     --popover-foreground: 0 0% 98%;
-    --primary: 25 95% 53%;            /* #F97316 orange */
+    --primary: 0 0% 100%;             /* white */
     --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 64%;     /* neutral gray */
-    --accent: 25 95% 53%;
+    --accent: 0 0% 100%;
     --accent-foreground: 0 0% 0%;
-    --destructive: 0 72% 51%;
+    --destructive: 0 0% 45%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 100% / 0.1;
     --input: 0 0% 100% / 0.14;
-    --ring: 25 95% 53%;               /* orange focus ring */
+    --ring: 0 0% 100%;                /* white focus ring */
     --radius: 0.75rem;
   }
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, #fed7aa 12%, #fb923c 52%, #f97316 100%);
+  background: linear-gradient(120deg, #ffffff 20%, #d4d4d4 60%, #a3a3a3 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -83,7 +83,7 @@ body {
   position: absolute;
   inset: -1.5px;
   border-radius: inherit;
-  background: conic-gradient(from var(--gs-angle), #f97316, #fb923c, #fdba74, #ea580c, #f97316);
+  background: conic-gradient(from var(--gs-angle), #ffffff, #a3a3a3, #525252, #d4d4d4, #ffffff);
   animation: gs-spin 6s linear infinite;
   pointer-events: none;
   transition: opacity 0.4s ease;

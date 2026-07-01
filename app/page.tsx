@@ -1,4 +1,3 @@
-import EnterScreen from "@/components/ui/enter-screen";
 import Hero from "@/components/ui/animated-shader-hero";
 import { TrailCard, type ProjectStatus } from "@/components/ui/trail-card";
 import { GlowingShadow } from "@/components/ui/glowing-shadow";
@@ -11,9 +10,6 @@ import { categories, projectsByCategory, liveCount, profile, social } from "@/li
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Enter animation */}
-      <EnterScreen />
-
       {/* Sticky glass nav (full-width) */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
