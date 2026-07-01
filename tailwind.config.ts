@@ -11,9 +11,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0F172A",
-        "ink-2": "#1E293B",
-        "ink-3": "#334155",
+        ink: "#000000",
+        "ink-2": "#121212",
+        "ink-3": "#1F1F1F",
         live: "#F97316",
         star: "#F8FAFC",
         // shadcn tokens (themed in app/globals.css)

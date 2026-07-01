@@ -1,4 +1,4 @@
-import LayoutPreloader from "@/components/ui/layout-preloader";
+import EnterScreen from "@/components/ui/enter-screen";
 import Hero from "@/components/ui/animated-shader-hero";
 import { TrailCard, type ProjectStatus } from "@/components/ui/trail-card";
 import { GlowingShadow } from "@/components/ui/glowing-shadow";
@@ -11,8 +11,8 @@ import { categories, projectsByCategory, liveCount, profile, social } from "@/li
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Start animation */}
-      <LayoutPreloader />
+      {/* Enter animation */}
+      <EnterScreen />
 
       {/* Sticky glass nav (full-width) */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-md">
@@ -30,7 +30,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub profile"
-              className="cursor-pointer rounded-lg p-2 text-slate-300 transition-colors hover:text-star"
+              className="cursor-pointer rounded-lg p-2 text-neutral-300 transition-colors hover:text-star"
             >
               <GitHub className="h-5 w-5" />
             </a>
@@ -39,7 +39,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
-              className="cursor-pointer rounded-lg p-2 text-slate-300 transition-colors hover:text-star"
+              className="cursor-pointer rounded-lg p-2 text-neutral-300 transition-colors hover:text-star"
             >
               <LinkedIn className="h-5 w-5" />
             </a>
@@ -74,7 +74,7 @@ export default function Home() {
             <div className="max-w-2xl">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-live">{cat.eyebrow}</p>
               <h2 className="mt-2 font-heading text-3xl font-bold tracking-tight sm:text-4xl">{cat.label}</h2>
-              <p className="mt-3 text-base leading-relaxed text-slate-300">{cat.subtitle}</p>
+              <p className="mt-3 text-base leading-relaxed text-neutral-300">{cat.subtitle}</p>
             </div>
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {projectsByCategory(cat.id).map((project) => {

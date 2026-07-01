@@ -7,24 +7,24 @@
   :root {
     color-scheme: dark;
 
-    --background: 222 47% 11%;        /* #0F172A ink */
-    --foreground: 210 40% 98%;        /* #F8FAFC star */
-    --card: 217 33% 17%;              /* #1E293B ink-2 */
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --background: 0 0% 0%;            /* black */
+    --foreground: 0 0% 98%;           /* near-white */
+    --card: 0 0% 7%;                  /* #121212 */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 98%;
     --primary: 25 95% 53%;            /* #F97316 orange */
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 20%;
-    --muted-foreground: 215 20% 65%;  /* slate-400 */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;     /* neutral gray */
     --accent: 25 95% 53%;
-    --accent-foreground: 222 47% 11%;
+    --accent-foreground: 0 0% 0%;
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 215 20% 35% / 0.25;
-    --input: 215 20% 35% / 0.3;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.14;
     --ring: 25 95% 53%;               /* orange focus ring */
     --radius: 0.75rem;
   }
@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  background-color: #0f172a;
+  background-color: #000000;
   color: #f8fafc;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

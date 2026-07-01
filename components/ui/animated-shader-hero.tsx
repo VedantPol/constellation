@@ -310,7 +310,7 @@ const Hero: React.FC<HeroProps> = ({ trustBadge, headline, subtitle, buttons, id
         ref={canvasRef}
         aria-hidden="true"
         className="absolute inset-0 w-full h-full touch-none"
-        style={{ background: "#0F172A" }}
+        style={{ background: "#000000" }}
       />
 
       {/* readability scrim */}

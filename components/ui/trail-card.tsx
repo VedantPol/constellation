@@ -28,8 +28,8 @@ interface TrailCardProps {
 
 const STATUS_META: Record<ProjectStatus, { label: string; className: string }> = {
   live: { label: "Live", className: "text-live" },
-  offline: { label: "Sleeping", className: "text-slate-400" },
-  repo: { label: "Repository", className: "text-slate-300" },
+  offline: { label: "Sleeping", className: "text-neutral-400" },
+  repo: { label: "Repository", className: "text-neutral-300" },
 };
 
 const TrailCard = React.forwardRef<HTMLDivElement, TrailCardProps>(
@@ -103,7 +103,7 @@ const TrailCard = React.forwardRef<HTMLDivElement, TrailCardProps>(
             {tags.map((t) => (
               <li
                 key={t}
-                className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300"
+                className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-neutral-300"
               >
                 {t}
               </li>

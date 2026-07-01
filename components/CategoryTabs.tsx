@@ -36,7 +36,7 @@ export default function CategoryTabs() {
           href={`#${c.id}`}
           aria-current={active === c.id ? "true" : undefined}
           className={`cursor-pointer whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors duration-200 ${
-            active === c.id ? "text-live" : "text-slate-300 hover:text-star"
+            active === c.id ? "text-live" : "text-neutral-300 hover:text-star"
           }`}
         >
           {c.label}
